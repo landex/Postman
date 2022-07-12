@@ -1,0 +1,290 @@
+{
+	"variables": [],
+	"info": {
+		"name": "WireCard",
+		"_postman_id": "c7580b39-71bb-c405-48cb-e78a6886f300",
+		"description": "",
+		"schema": "https://schema.getpostman.com/json/collection/v2.0.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Post- CriarPedidoComSucesso",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"type": "text/javascript",
+						"exec": [
+							"tests[\"Pedido Realizado com sucesso\"] = responseCode.code === 201;"
+						]
+					}
+				}
+			],
+			"request": {
+				"auth": {
+					"type": "basic",
+					"basic": {
+						"username": "GNZAYVVWN4OU12DVYMTGCMP7TULYJGBZ",
+						"password": "LK5F39NV1TYK5XKQ1E7HHNVJ0MYETIJWPIDMITEI",
+						"saveHelperData": true,
+						"showPassword": false
+					}
+				},
+				"url": "https://sandbox.moip.com.br/v2/orders",
+				"method": "POST",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "Basic R05aQVlWVldONE9VMTJEVllNVEdDTVA3VFVMWUpHQlo6TEs1RjM5TlYxVFlLNVhLUTFFN0hITlZKME1ZRVRJSldQSURNSVRFSQ==",
+						"description": ""
+					},
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"description": ""
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{  \r\n   \"ownId\":\"meu_pedido_01\",\r\n   \"amount\":{  \r\n      \"currency\":\"BRL\",\r\n      \"subtotals\":{  \r\n         \"shipping\":15\r\n      }\r\n   },\r\n   \"items\":[  \r\n      {  \r\n         \"product\":\"Descrição do pedido\",\r\n         \"category\":\"CLOTHING\",\r\n         \"quantity\":1,\r\n         \"detail\":\"Camiseta preta\",\r\n         \"price\":95\r\n      }\r\n   ],\r\n   \"customer\":{  \r\n      \"id\":\"CUS-BQB4U92QZ5AK\"\r\n   }\r\n}"
+				},
+				"description": "Teste para criar um pedido de compra de um cliente cadastrado, utilizando a API - https://sandbox.moip.com.br/v2/orders"
+			},
+			"response": []
+		},
+		{
+			"name": "Post- CriarPedidoSemQuantidade",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"type": "text/javascript",
+						"exec": [
+							"tests[\"Pedido não realizado campo não quantidade não preenchido\"] = responseCode.code === 400;"
+						]
+					}
+				}
+			],
+			"request": {
+				"auth": {
+					"type": "basic",
+					"basic": {
+						"username": "GNZAYVVWN4OU12DVYMTGCMP7TULYJGBZ",
+						"password": "LK5F39NV1TYK5XKQ1E7HHNVJ0MYETIJWPIDMITEI",
+						"saveHelperData": true,
+						"showPassword": false
+					}
+				},
+				"url": "https://sandbox.moip.com.br/v2/orders",
+				"method": "POST",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "Basic R05aQVlWVldONE9VMTJEVllNVEdDTVA3VFVMWUpHQlo6TEs1RjM5TlYxVFlLNVhLUTFFN0hITlZKME1ZRVRJSldQSURNSVRFSQ==",
+						"description": ""
+					},
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"description": ""
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{  \r\n   \"ownId\":\"meu_pedido_02\",\r\n   \"amount\":{  \r\n      \"currency\":\"BRL\",\r\n      \"subtotals\":{  \r\n         \"shipping\":15\r\n      }\r\n   },\r\n   \"items\":[  \r\n      {  \r\n         \"product\":\"Descrição do pedido\",\r\n         \"category\":\"CLOTHING\",\r\n         \"quantity\":1,\r\n         \"detail\":\"Camiseta preta\",\r\n         \"price\":\r\n      }\r\n   ],\r\n   \"customer\":{  \r\n      \"id\":\"CUS-BQB4U92QZ5AK\"\r\n   }\r\n}"
+				},
+				"description": "Teste Negativo\nTeste para criar um pedido de compra de um cliente cadastrado,sem preencher o campo de quantidade.\nutilizando a API - https://sandbox.moip.com.br/v2/orders"
+			},
+			"response": []
+		},
+		{
+			"name": "Post- CriarPedidoClienteNaoCadastrado",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"type": "text/javascript",
+						"exec": [
+							"tests[\"Pedido Não realizado Cliente Não Cadastrado\"] = responseCode.code === 400;"
+						]
+					}
+				}
+			],
+			"request": {
+				"auth": {
+					"type": "basic",
+					"basic": {
+						"username": "GNZAYVVWN4OU12DVYMTGCMP7TULYJGBZ",
+						"password": "LK5F39NV1TYK5XKQ1E7HHNVJ0MYETIJWPIDMITEI",
+						"saveHelperData": true,
+						"showPassword": false
+					}
+				},
+				"url": "https://sandbox.moip.com.br/v2/orders",
+				"method": "POST",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "Basic R05aQVlWVldONE9VMTJEVllNVEdDTVA3VFVMWUpHQlo6TEs1RjM5TlYxVFlLNVhLUTFFN0hITlZKME1ZRVRJSldQSURNSVRFSQ==",
+						"description": ""
+					},
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"description": ""
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{  \r\n   \"ownId\":\"meu_pedido_01\",\r\n   \"amount\":{  \r\n      \"currency\":\"BRL\",\r\n      \"subtotals\":{  \r\n         \"shipping\":15\r\n      }\r\n   },\r\n   \"items\":[  \r\n      {  \r\n         \"product\":\"Descrição do pedido\",\r\n         \"category\":\"CLOTHING\",\r\n         \"quantity\":1,\r\n         \"detail\":\"Camiseta preta\",\r\n         \"price\":95\r\n      }\r\n   ],\r\n   \"customer\":{  \r\n      \"id\":\r\n   }\r\n}"
+				},
+				"description": "Teste negativo\n\nTeste para criar um pedido de compra de um cliente não cadastrado, utilizando a API - https://sandbox.moip.com.br/v2/orders"
+			},
+			"response": []
+		},
+		{
+			"name": "Get- ConsultaPedidoComSucesso",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"type": "text/javascript",
+						"exec": [
+							"tests[\"Pedido localizado com sucesso\"] = responseCode.code === 200;",
+							"",
+							"tests[\"Pedido com status CREATED\"] = responseBody.has(\"CREATED\");",
+							""
+						]
+					}
+				}
+			],
+			"request": {
+				"auth": {
+					"type": "basic",
+					"basic": {
+						"username": "GNZAYVVWN4OU12DVYMTGCMP7TULYJGBZ",
+						"password": "LK5F39NV1TYK5XKQ1E7HHNVJ0MYETIJWPIDMITEI",
+						"saveHelperData": true,
+						"showPassword": false
+					}
+				},
+				"url": "https://sandbox.moip.com.br/v2/orders/ORD-XV2EGCGAAAAE",
+				"method": "GET",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "Basic R05aQVlWVldONE9VMTJEVllNVEdDTVA3VFVMWUpHQlo6TEs1RjM5TlYxVFlLNVhLUTFFN0hITlZKME1ZRVRJSldQSURNSVRFSQ==",
+						"description": ""
+					},
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"description": ""
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{  \r\n   \"ownId\":\"meu_pedido_01\",\r\n   \"amount\":{  \r\n      \"currency\":\"BRL\",\r\n      \"subtotals\":{  \r\n         \"shipping\":15\r\n      }\r\n   },\r\n   \"items\":[  \r\n      {  \r\n         \"product\":\"Descrição do pedido\",\r\n         \"category\":\"CLOTHING\",\r\n         \"quantity\":1,\r\n         \"detail\":\"Camiseta preta\",\r\n         \"price\":95\r\n      }\r\n   ],\r\n   \"customer\":{  \r\n      \"id\":\"CUS-BQB4U92QZ5AK\"\r\n   }\r\n}"
+				},
+				"description": "Teste para criar consultar pedido de compra de um cliente cadastrado, utilizando a API - https://sandbox.moip.com.br/v2/orders"
+			},
+			"response": []
+		},
+		{
+			"name": "Get- ConsultaTodosPedidos",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"type": "text/javascript",
+						"exec": [
+							"tests[\"Pedido localizado com sucesso\"] = responseCode.code === 200;",
+							"",
+							"tests[\"Pedido com status CREATED\"] = responseBody.has(\"CREATED\");",
+							""
+						]
+					}
+				}
+			],
+			"request": {
+				"auth": {
+					"type": "basic",
+					"basic": {
+						"username": "GNZAYVVWN4OU12DVYMTGCMP7TULYJGBZ",
+						"password": "LK5F39NV1TYK5XKQ1E7HHNVJ0MYETIJWPIDMITEI",
+						"saveHelperData": true,
+						"showPassword": false
+					}
+				},
+				"url": "https://sandbox.moip.com.br/v2/orders",
+				"method": "GET",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "Basic R05aQVlWVldONE9VMTJEVllNVEdDTVA3VFVMWUpHQlo6TEs1RjM5TlYxVFlLNVhLUTFFN0hITlZKME1ZRVRJSldQSURNSVRFSQ==",
+						"description": ""
+					},
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"description": ""
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{  \r\n   \"ownId\":\"meu_pedido_01\",\r\n   \"amount\":{  \r\n      \"currency\":\"BRL\",\r\n      \"subtotals\":{  \r\n         \"shipping\":15\r\n      }\r\n   },\r\n   \"items\":[  \r\n      {  \r\n         \"product\":\"Descrição do pedido\",\r\n         \"category\":\"CLOTHING\",\r\n         \"quantity\":1,\r\n         \"detail\":\"Camiseta preta\",\r\n         \"price\":95\r\n      }\r\n   ],\r\n   \"customer\":{  \r\n      \"id\":\"CUS-BQB4U92QZ5AK\"\r\n   }\r\n}"
+				},
+				"description": "Teste para criar consultar Todos pedido de compra, utilizando a API - https://sandbox.moip.com.br/v2/orders"
+			},
+			"response": []
+		},
+		{
+			"name": "Post-CriarPagamento",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"type": "text/javascript",
+						"exec": [
+							"tests[\"Pedido localizado com sucesso\"] = responseCode.code === 200;",
+							"",
+							"tests[\"Pedido com status CREATED\"] = responseBody.has(\"CREATED\");",
+							""
+						]
+					}
+				}
+			],
+			"request": {
+				"auth": {
+					"type": "basic",
+					"basic": {
+						"username": "GNZAYVVWN4OU12DVYMTGCMP7TULYJGBZ",
+						"password": "LK5F39NV1TYK5XKQ1E7HHNVJ0MYETIJWPIDMITEI",
+						"saveHelperData": true,
+						"showPassword": false
+					}
+				},
+				"url": "https://sandbox.moip.com.br/v2/orders/ORD-XV2EGCGAAAAE/payments",
+				"method": "POST",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "Basic R05aQVlWVldONE9VMTJEVllNVEdDTVA3VFVMWUpHQlo6TEs1RjM5TlYxVFlLNVhLUTFFN0hITlZKME1ZRVRJSldQSURNSVRFSQ==",
+						"description": ""
+					},
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"description": ""
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n  \"installmentCount\": 1,\r\n  \"statementDescriptor\": \"minhaLoja.com\",\r\n  \"fundingInstrument\": {\r\n    \"method\": \"CREDIT_CARD\",\r\n    \"creditCard\": {\r\n      \"hash\": \"HhL0kbhfid+jwgj5l6Kt9EPdetDxQN8s7uKUHDYxDC/XoULjzik44rSda3EcWuOcL17Eb8JjWc1JI7gsuwg9P0rJv1mJQx+d3Dv1puQYz1iRjEWWhnB1bw0gTvnnC/05KbWN5M8oTiugmhVK02Rt2gpbcTtpS7VWyacfgesBJFavYYMljYg8p2YGHXkXrMuQiOCeemKLk420d0OTMBba27jDVVJ663HZDrObnjFXJH/4B5irkj+HO5genV+V4PYoLcOESG4nrI3oFAsMGsLLcdJo0NNvkEmJpn0e9GzureKKFYisYU+BEd9EMr/odS0VMvOYRV65HbPTspIkjl2+3Q==\",\r\n      \"store\": true,\r\n      \"holder\": {\r\n        \"fullname\": \"Maria da teste\",\r\n        \"birthdate\": \"1980-05-10\",\r\n        \"taxDocument\": {\r\n          \"type\": \"CPF\",\r\n          \"number\": \"65055744170\"\r\n        },\r\n        \"phone\": {\r\n          \"countryCode\": \"55\",\r\n            \"areaCode\": \"11\",\r\n            \"number\": \"22226842\"\r\n        }\r\n      }\r\n    }\r\n  },\r\n  \"device\": {\r\n    \"ip\": \"127.0.0.1\",\r\n    \"geolocation\": {\r\n      \"latitude\": -33.867,\r\n      \"longitude\": 151.206\r\n    },\r\n    \"userAgent\": \"Mozilla/5.0 (Macintosh; Intel Mac OS X 10_12_4) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/58.0.3029.81 Safari/537.36\",\r\n    \"fingerprint\": \"QAZXswedCVGrtgBNHyujMKIkolpQAZXswedCVGrtgBNHyujMKIkolpQAZXswedCVGrtgBNHyujMKIkolpQAZXswedCVGrtgBNHyujMKIkolp\"\r\n  }\r\n}"
+				},
+				"description": "Teste para criar pagamento de pedido, utilizando a API - https://sandbox.moip.com.br/v2/orders/order_id/payments"
+			},
+			"response": []
+		}
+	]
+}
